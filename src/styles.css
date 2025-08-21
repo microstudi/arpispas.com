@@ -45,6 +45,7 @@ body {
   left: 0;
   width: 100%;
   color: white;
+  z-index: 1;
 }
 
 .main > .info {
@@ -100,7 +101,7 @@ body {
   box-shadow: 2px 2px 8px rgba(0, 0, 0,0.2);
   position: absolute;
   display: inline-block;
-  top: 40px;
+  top: 20px;
   left: 40px;
   border-radius: 80px;
   padding: 20px;
@@ -148,7 +149,7 @@ a:hover, a:focus {
   display: flex;
   gap: 16px;
   justify-content: flex-end;
-  margin: 40px 40px 0 40px;
+  margin: 40px 180px 0 40px;
 }
 
 .hamburger {
@@ -177,7 +178,7 @@ a:hover, a:focus {
   transition: 0.3s;
 }
 .hamburger.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(16px) rotate(45deg);
 }
 .hamburger.open span:nth-child(2) {
   opacity: 0;
@@ -197,7 +198,8 @@ a:hover, a:focus {
   background: rgba(0, 0, 0, 0.4);
   box-shadow: none;
 }
-.nav a.play {
+
+a.play {
   margin-left: 2.5em;
   background: #fff2;
   color: #ffb300;
@@ -206,8 +208,11 @@ a:hover, a:focus {
   font-weight: 700;
   letter-spacing: 0.05em;
   transition: background 0.2s, color 0.2s;
+  position: absolute;
+  top: 40px;
+  right: 40px;
 }
-.nav a.play.active {
+a.play.active {
   background: #ffb300;
   color: #222;
 }
@@ -220,48 +225,7 @@ li {
   margin-bottom: 1em;
 }
 
-@media only screen and (max-width: 700px) {
-  .hamburger {
-    display: flex;
-  }
-  .nav {
-    flex-direction: column;
-    align-items: flex-end;
-    background: rgba(30,30,30,0.98);
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 0;
-    overflow: hidden;
-    gap: 0;
-    padding: 0 0;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
-    z-index: 2000;
-    transition: height 0.3s;
-  }
-  .nav.open {
-    height: 320px;
-    padding: 60px 0 0 0;
-    gap: 18px;
-    overflow: visible;
-  }
-  .nav a {
-    margin: 0 24px;
-    font-size: 1.2em;
-    padding: 10px 0;
-    width: auto;
-    display: block;
-    text-align: right;
-  }
-  .header-left {
-    font-size: 1em;
-    padding: 0;
-  }
-  .header-left img {
-    width: 60px;
-    height: 60px;
-  }
+@media only screen and (max-width: 1200px) {
   .main > .info {
     max-width: 100%;
     left: 4vw;
@@ -270,9 +234,59 @@ li {
   .viewport {
     width: 92vw;
   }
+  .header-left {
+    font-size: 1em;
+    padding: 10px;
+  }
+  .header-left img {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    background: rgba(30,30,30,0.98);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0;
+    width: 90vw;
+    overflow: hidden;
+    gap: 0;
+    padding: 0 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    z-index: 2000;
+    transition: height 0.3s;
+    justify-content: center;
+  }
+  .nav.open {
+    height: 94vh;
+    top: -20px;
+    padding: 40px 0 0 0;
+    gap: 18px;
+    overflow: visible;
+  }
+  .nav a {
+    margin: 0 24px;
+    font-size: 1.8em;
+    padding: 10px;
+    width: auto;
+    display: block;
+    text-align: center;
+  }
+
+  a.play {
+    right: 100px;
+  }
 
   .info-container > pre[class*='language-'] {
     font-size: 0.6rem !important;
     border-radius: 10px 10px 0 0 !important;
   }
- 
+}

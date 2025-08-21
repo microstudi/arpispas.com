@@ -29,6 +29,10 @@ export default function Details({ active, setActive, setBeastIndex }) {
     setMenuOpen(false);
   };
 
+  // Separate play from the rest
+  const navItems = menuItems.filter(item => item.key !== 'play');
+  const playItem = menuItems.find(item => item.key === 'play');
+
   return (
     <>
       <button
@@ -39,7 +43,7 @@ export default function Details({ active, setActive, setBeastIndex }) {
         <span></span><span></span><span></span>
       </button>
       <nav className={"nav" + (menuOpen ? " open" : "") }>
-        {menuItems.map((item, idx) => (
+        {navItems.map((item, idx) => (
           <a
             href={item.url}
             key={item.key}
@@ -50,6 +54,17 @@ export default function Details({ active, setActive, setBeastIndex }) {
           </a>
         ))}
       </nav>
+      {/* Play button always visible, styled separately */}
+      {playItem && (
+        <a
+          href={playItem.url}
+          key={playItem.key}
+          className={"play" + (active === playItem.key ? " active" : "")}
+          onClick={e => handleNavClick(playItem, menuItems.length - 1, e)}
+        >
+          {playItem.label}
+        </a>
+      )}
       <div className="header-left">
         <img
           src="/arpispas.svg"
