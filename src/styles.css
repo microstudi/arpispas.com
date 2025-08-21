@@ -1,6 +1,12 @@
+
+@keyframes fadeInBox {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 * {
   box-sizing: border-box;
 }
+
 
 html,
 body,
@@ -10,7 +16,6 @@ body,
   margin: 0;
   padding: 0;
   -webkit-touch-callout: none;
-  overflow: hidden;
   background: #010101;
 }
 
@@ -39,76 +44,59 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
   color: white;
 }
 
 .main > .info {
   position: absolute;
-  right: 10vw;
-  margin-right: -60px;
-  width: 640px;
-  max-width: 80%;
   height: 100%;
+  max-width: 90%;
+  left: 80%;
+  transform: translateX(-80%);
+  margin-top: 120px;
+}
+
+.viewport {
   display: flex;
+  width: 50vw;
+  height: auto;
+  min-height: 0;
   align-items: center;
   justify-content: center;
+  background: rgba(30, 30, 30, 0.97);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 0;
+  z-index: 1000;
+  font-size: 1.1em;
 }
 
-.info-container {
-  position: relative;
-  margin-bottom: -60px;
+.viewport-hidden {
+  opacity: 0.05;
+  pointer-events: none;
+  transition: opacity 0.5s;
 }
 
-.counter {
-  position: absolute;
-  top: -100px;
-  right: -20px;
-  color: white;
-  background: #394a52;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 16px 40px -5px rgba(0, 0, 0, 0.5);
-  width: 120px;
-  height: 120px;
-  font-size: 3em;
+.fade-in-box {
+  animation: fadeInBox 0.7s;
+}
+.viewport .iframe-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.viewport iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
 }
 
-.counter > span {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-top: -15px;
-  transform: translate3d(-50%, -50%, 0);
+.viewport .content {
+  padding: 32px 28px;
 }
 
-.counter > button {
-  margin: 10px;
-  padding: 5px 10px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100px;
-  border-radius: 5px;
-  border: solid 2px white;
-  outline: none;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-}
-
-.info-container pre[class*='language-'] {
-  margin-top: -50px;
-  display: inline-block;
-  width: auto !important;
-  padding: 40px 50px 40px 45px;
-  font-size: 0.8rem !important;
-  border-radius: 10px !important;
-  box-shadow: 0 16px 40px -5px rgba(0, 0, 0, 1);
-  white-space: pre-wrap !important;
-}
-
-span.header-left {
+.header-left {
   box-shadow: 2px 2px 8px rgba(0, 0, 0,0.2);
   position: absolute;
   display: inline-block;
@@ -119,27 +107,40 @@ span.header-left {
   backdrop-filter: blur(12px) brightness(1.1);
   -webkit-backdrop-filter: blur(12px) brightness(1.1);
 }
+.header-left img {
+  width: 120px;
+  height: 120px;
+  border-radius: 80px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.bottom a {
+  background: none;
+  color: gray;
+}
 
 a {
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    avenir next,
-    avenir,
-    helvetica neue,
-    helvetica,
-    ubuntu,
-    roboto,
-    noto,
-    segoe ui,
-    arial,
-    sans-serif;
+  text-decoration: none;
   font-weight: 400;
   font-size: 16px;
   color: inherit;
-  position: absolute;
-  display: inline;
-  text-decoration: none;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  color: #00e0ff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+a:hover, a:focus {
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 18px rgba(0,224,255,0.18);
+  outline: none;
 }
 
 .nav {
@@ -147,60 +148,131 @@ a {
   display: flex;
   gap: 16px;
   justify-content: flex-end;
-  left: 40px;
-  position: fixed;
-  right: 40px;
-  top: 40px;
+  margin: 40px 40px 0 40px;
 }
+
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 36px;
+  right: 32px;
+  z-index: 2001;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+.hamburger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  margin: 4px 0;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
 
 .nav a {
   text-transform: uppercase;
   font-weight: 600;
   position: relative;
   flex: 0 0 auto;
+  color: white;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: none;
+}
+.nav a.play {
+  margin-left: 2.5em;
+  background: #fff2;
+  color: #ffb300;
+  border-radius: 2em;
+  padding: 0.3em 1.2em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: background 0.2s, color 0.2s;
+}
+.nav a.play.active {
+  background: #ffb300;
+  color: #222;
 }
 
-a.bottom-left {
-  bottom: 40px;
-  left: 40px;
+.nav a.active {
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-a.bottom-right {
-  bottom: 40px;
-  right: 40px;
-}
-
-.snippet-container {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 5px;
-}
-
-.snippet-lang {
-  background-color: #272822;
-  color: #fff;
-  outline: 0;
-  border: 0;
+li {
+  margin-bottom: 1em;
 }
 
 @media only screen and (max-width: 700px) {
-  span.header-left {
+  .hamburger {
+    display: flex;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: flex-end;
+    background: rgba(30,30,30,0.98);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0;
+    overflow: hidden;
+    gap: 0;
+    padding: 0 0;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    z-index: 2000;
+    transition: height 0.3s;
+  }
+  .nav.open {
+    height: 320px;
+    padding: 60px 0 0 0;
+    gap: 18px;
+    overflow: visible;
+  }
+  .nav a {
+    margin: 0 24px;
+    font-size: 1.2em;
+    padding: 10px 0;
+    width: auto;
+    display: block;
+    text-align: right;
+  }
+  .header-left {
     font-size: 1em;
+    padding: 0;
+  }
+  .header-left img {
+    width: 60px;
+    height: 60px;
   }
   .main > .info {
-    margin-right: -0px;
+    max-width: 100%;
+    left: 4vw;
+    transform: translateX(0);
   }
+  .viewport {
+    width: 92vw;
+  }
+
   .info-container > pre[class*='language-'] {
     font-size: 0.6rem !important;
     border-radius: 10px 10px 0 0 !important;
   }
-  .counter {
-    position: absolute;
-    top: -120px;
-  }
-}
+ 

@@ -41,5 +41,9 @@ This is the source code for the arpispas.com website.
 - Node.js (v16 or newer recommended)
 - npm
 
+## Credits
+
+We have to say, we adapted the code from here: https://zustand-demo.pmnd.rs/
+
 ---
 Feel free to open issues or contribute!

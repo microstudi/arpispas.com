@@ -21,12 +21,13 @@ import beast6Url from '../resources/beast6.png'
 import leaves1Url from '../resources/leaves1.png'
 import leaves2Url from '../resources/leaves2.png'
 import '../materials/layerMaterial'
-const beastUrls = [beast1Url, beast2Url, beast3Url, beast4Url, beast5Url, beast6Url]
-const beastUrl = beastUrls[Math.floor(Math.random() * beastUrls.length)]
 
-function Experience() {
+const beastUrls = [beast1Url, beast2Url, beast3Url, beast4Url, beast5Url, beast6Url]
+
+function Experience({ beastIndex }) {
   const scaleN = useAspect(1600, 1000, 1.05)
   const scaleW = useAspect(2200, 1000, 1.05)
+  const beastUrl = beastUrls[beastIndex % beastUrls.length]
   const textures = useTexture([
     bgUrl,
     starsUrl,
@@ -39,13 +40,21 @@ function Experience() {
   const layersRef = useRef([])
   const [movement] = useState(() => new Vector3())
   const [temp] = useState(() => new Vector3())
+  // Randomize leaves2 position when beastIndex changes
+  const [beastPos, setbeastPos] = useState(0)
+  useLayoutEffect(() => {
+    setbeastPos(
+      MathUtils.randFloat(-80, 80)
+    )
+  }, [beastIndex])
+
   const layers = [
     { texture: textures[0], x: 0, y: 0, z: 0, factor: 0.005, scale: scaleW },
     { texture: textures[1], x: 0, y: 0, z: 10, factor: 0.005, scale: scaleW },
     { texture: textures[2], x: 0, y: 0, z: 20, scale: scaleW },
     {
       texture: textures[3],
-      x: 0,
+      x: beastPos,
       y: 0,
       z: 30,
       scaleFactor: 0.83,
@@ -182,7 +191,7 @@ function FallbackScene() {
   )
 }
 
-export default function Scene() {
+export default function Scene({ beastIndex = 0 }) {
   const [error, setError] = useState(null)
 
   if (error) {
@@ -191,7 +200,7 @@ export default function Scene() {
 
   return (
     <Canvas onError={setError}>
-      <Experience />
+      <Experience beastIndex={beastIndex} />
       <Effects />
     </Canvas>
   )
