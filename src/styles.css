@@ -109,6 +109,7 @@ body {
 .viewport.elements {
   width: 90vw;
   height: 80vh;
+  background: none;
 }
 
 .header-left {
@@ -242,6 +243,7 @@ li {
 .slideshow {
   width: 100%;
   position: relative;
+  border: 20px solid rgba(30, 30, 30, 0.97);
 }
 .slideshow img {
   width: 100%;
