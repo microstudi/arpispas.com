@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function Elements() {
-    const images = Array.from({ length: 20 }, (_, i) => `gallery/image${i + 1}.jpg`);
+    const images = Array.from({ length: 20 }, (_, i) => `/gallery/image${i + 1}.jpg`);
     const [current, setCurrent] = useState(0);
     const [fade, setFade] = useState(false);
     // Preload images

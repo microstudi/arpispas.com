@@ -1,5 +1,5 @@
 import { Mesh, PlaneGeometry, Group, Vector3, MathUtils } from 'three'
-import { useRef, useState, useLayoutEffect } from 'react'
+import { useRef, useState, useLayoutEffect, Suspense } from 'react'
 import { createRoot, events, extend, useFrame } from '@react-three/fiber'
 import { Plane, useAspect, useTexture } from '@react-three/drei'
 import {
@@ -200,8 +200,10 @@ export default function Scene({ beastIndex = 0 }) {
 
   return (
     <Canvas onError={setError}>
-      <Experience beastIndex={beastIndex} />
-      <Effects />
+      <Suspense fallback={<group />}> {/* fallback must be a valid R3F node */}
+        <Experience beastIndex={beastIndex} />
+        <Effects />
+      </Suspense>
     </Canvas>
   )
 }
