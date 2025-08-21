@@ -1,4 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+    // Preload images
+    useEffect(() => {
+        images.forEach(src => {
+            const img = new window.Image();
+            img.src = src;
+        });
+    }, [images]);
 
 export default function Elements() {
     const images = Array.from({ length: 20 }, (_, i) => `gallery/image${i + 1}.jpg`);
