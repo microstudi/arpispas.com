@@ -41,11 +41,11 @@ function Experience({ beastIndex }) {
   const [movement] = useState(() => new Vector3())
   const [temp] = useState(() => new Vector3())
   // Randomize leaves2 position when beastIndex changes
-  const [beastPos, setbeastPos] = useState(0)
+  const [beastPos, setbeastPos] = useState({ x: 0, y: 0 })
   useLayoutEffect(() => {
-    setbeastPos(
-      MathUtils.randFloat(-80, 80)
-    )
+    let x = Math.random() * 140 - 60 // Random position between -80 and 80
+    let y = Math.random() * 60 - 30 // Random position between -30 and 30
+    setbeastPos({ x, y })
   }, [beastIndex])
 
   const layers = [
@@ -54,8 +54,8 @@ function Experience({ beastIndex }) {
     { texture: textures[2], x: 0, y: 0, z: 20, scale: scaleW },
     {
       texture: textures[3],
-      x: beastPos,
-      y: 0,
+      x: beastPos.x,
+      y: beastPos.y,
       z: 30,
       scaleFactor: 0.83,
       scale: scaleN,

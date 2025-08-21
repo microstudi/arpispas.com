@@ -5,7 +5,7 @@ const menuItems = [
   { url: 'about', label: 'Qui Sóm' },
   { url: 'what', label: 'Què Fem' },
   { url: 'shows', label: 'Espectacles' },
-  { url: 'elements', label: 'Elements & imatges' },
+  { url: 'elements', label: 'Elements' },
   { url: 'contact', label: 'Contacte' },
   { url: 'play', label: 'Juguem?' },
 ].map(item => ({ ...item, key: item.url }));
@@ -18,10 +18,11 @@ export default function Details({ active, setActive, setBeastIndex }) {
   const handleNavClick = (item, idx, e) => {
     e.preventDefault();
     setActive(item.key);
-    if (item.key === 'play') {
-      setBeastIndex(prev => (prev === null ? 0 : (prev + 1) % 6));
+    if (idx === -1) {
+      const rand = Math.floor(Math.random() * 6) + 1;
+      setBeastIndex(rand);
     } else {
-      setBeastIndex(idx % 6 + 1);
+      setBeastIndex(idx);
     }
     window.location.hash = `#${item.url}`;
     if (window.umami && typeof window.umami.track === 'function') {
@@ -60,8 +61,8 @@ export default function Details({ active, setActive, setBeastIndex }) {
         <a
           href={playItem.url}
           key={playItem.key}
-          className={"play" + (active === playItem.key ? " active" : "")}
-          onClick={e => handleNavClick(playItem, menuItems.length - 1, e)}
+          className={active === playItem.key ? `active ${playItem.key}` : playItem.key}
+          onClick={e => handleNavClick(playItem, -1, e)}
         >
           {playItem.label}
         </a>
