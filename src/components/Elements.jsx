@@ -1,4 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+
+export default function Elements() {
+    const images = Array.from({ length: 20 }, (_, i) => `gallery/image${i + 1}.jpg`);
+    const [current, setCurrent] = useState(0);
+    const [fade, setFade] = useState(false);
     // Preload images
     useEffect(() => {
         images.forEach(src => {
@@ -6,11 +11,6 @@ import { useState, useEffect } from 'react'
             img.src = src;
         });
     }, [images]);
-
-export default function Elements() {
-    const images = Array.from({ length: 20 }, (_, i) => `gallery/image${i + 1}.jpg`);
-    const [current, setCurrent] = useState(0);
-    const [fade, setFade] = useState(false);
 
     const triggerFade = (nextIdxFn) => {
         setFade(true);
