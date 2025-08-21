@@ -5,6 +5,7 @@ import Origin from './components/Origin';
 import About from './components/About';
 import What from './components/What';
 import Shows from './components/Shows';
+import Elements from './components/Elements';
 import Contact from './components/Contact';
 import { useState, useEffect } from 'react';
 
@@ -14,7 +15,9 @@ const mainContentComponents = {
   about: <About />,
   what: <What />,
   shows: <Shows />,
+  elements: <Elements />,
   contact: <Contact />,
+  play: null, // Play is handled in Scene
 };
 
 

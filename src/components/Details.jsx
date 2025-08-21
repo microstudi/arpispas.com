@@ -5,6 +5,7 @@ const menuItems = [
   { url: 'about', label: 'Qui Sóm' },
   { url: 'what', label: 'Què Fem' },
   { url: 'shows', label: 'Espectacles' },
+  { url: 'elements', label: 'Elements & imatges' },
   { url: 'contact', label: 'Contacte' },
   { url: 'play', label: 'Juguem?' },
 ].map(item => ({ ...item, key: item.url }));

@@ -12,15 +12,15 @@ export default function ViewPort({ active, content }) {
     }, [active]);
 
     return (
-        <div className={`viewport${active === 'play' ? ' viewport-hidden' : ''}`}>
-            {active && active !== 'play' ? (
+        <div className={`viewport ${active}`}>
+            {active ? (
                 <div
                     key={fadeKey}
                     className="content fade-in-box"
                 >
                     {content}
                 </div>
-            ) : active === 'play' ? null : (
+            ) : (
                 <div className="iframe-container">
                     <iframe src="https://app.mirror-app.com/feed-instagram/6daa5f2d-2753-467a-bb75-3c251adf2b43/preview"></iframe>
                 </div>

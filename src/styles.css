@@ -1,3 +1,8 @@
+/* Fade effect for slideshow images */
+.fade-img {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
 
 @keyframes fadeInBox {
   from { opacity: 0; transform: translateY(-10px); }
@@ -95,6 +100,15 @@ body {
 
 .viewport .content {
   padding: 32px 28px;
+}
+
+.viewport.play {
+  display: none;
+}
+
+.viewport.elements {
+  width: 90vw;
+  height: 80vh;
 }
 
 .header-left {
@@ -223,6 +237,44 @@ a.play.active {
 
 li {
   margin-bottom: 1em;
+}
+
+.slideshow {
+  width: 100%;
+  position: relative;
+}
+.slideshow img {
+  width: 100%;
+  height: auto;
+  max-height: 800px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+.slideshow button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 18px rgba(0,224,255,0.18);
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.35);cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin: 0 10px;
+  padding: 10px 12px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.slideshow button.left {
+  left: 10px;
+}
+
+.slideshow button.right {
+  right: 10px;
+}
+
+.slideshow button:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
 @media only screen and (max-width: 1200px) {
