@@ -43,7 +43,7 @@ body {
   color: white;
 }
 
-.main > .code {
+.main > .info {
   position: absolute;
   right: 10vw;
   margin-right: -60px;
@@ -55,7 +55,7 @@ body {
   justify-content: center;
 }
 
-.code-container {
+.info-container {
   position: relative;
   margin-bottom: -60px;
 }
@@ -97,7 +97,7 @@ body {
   cursor: pointer;
 }
 
-.code-container pre[class*='language-'] {
+.info-container pre[class*='language-'] {
   margin-top: -50px;
   display: inline-block;
   width: auto !important;
@@ -188,34 +188,14 @@ a.bottom-right {
   border: 0;
 }
 
-.copy-button {
-  box-shadow: none;
-  text-decoration: none;
-  font-size: 14px;
-  font-family: sans-serif;
-  line-height: 1;
-  padding: 12px;
-  width: auto;
-  border-radius: 5px;
-  border: 0;
-  outline: none;
-  background: transparent;
-  color: #f8f9fa;
-  cursor: pointer;
-}
-
-.copy-button:hover {
-  background-color: #5f5e5d;
-}
-
 @media only screen and (max-width: 700px) {
   span.header-left {
     font-size: 1em;
   }
-  .main > .code {
+  .main > .info {
     margin-right: -0px;
   }
-  .code-container > pre[class*='language-'] {
+  .info-container > pre[class*='language-'] {
     font-size: 0.6rem !important;
     border-radius: 10px 10px 0 0 !important;
   }

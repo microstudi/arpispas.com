@@ -12,10 +12,17 @@ import Fireflies from './Fireflies'
 import bgUrl from '../resources/bg.jpg'
 import starsUrl from '../resources/stars.png'
 import groundUrl from '../resources/ground.png'
-import beastUrl from '../resources/beast1.png'
+import beast1Url from '../resources/beast1.png'
+import beast2Url from '../resources/beast2.png'
+import beast3Url from '../resources/beast3.png'
+import beast4Url from '../resources/beast4.png'
+import beast5Url from '../resources/beast5.png'
+import beast6Url from '../resources/beast6.png'
 import leaves1Url from '../resources/leaves1.png'
 import leaves2Url from '../resources/leaves2.png'
 import '../materials/layerMaterial'
+const beastUrls = [beast1Url, beast2Url, beast3Url, beast4Url, beast5Url, beast6Url]
+const beastUrl = beastUrls[Math.floor(Math.random() * beastUrls.length)]
 
 function Experience() {
   const scaleN = useAspect(1600, 1000, 1.05)

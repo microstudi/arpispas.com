@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-import CodePreview from './components/CodePreview'
 import Details from './components/Details'
 import Scene from './components/Scene'
 
@@ -23,8 +22,8 @@ export default function App() {
     <>
       <Scene />
       <div className="main">
-        <div className="code">
-          <div className="code-container">
+        <div className="info">
+          <div className="info-container">
             <Viewport />
           </div>
         </div>

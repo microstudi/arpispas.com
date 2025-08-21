@@ -10,16 +10,15 @@ export default function Details() {
       </nav>
       <div className="bottom">
         <a
-          href="https://github.com/pmndrs/zustand/tree/main/examples/demo"
+          href="https://github.com/microstudi/arpispas.com"
           className="bottom-right"
         >
           {'<Source />'}
         </a>
         <a
-          href="https://www.instagram.com/tina.henschel/"
+          href="https://www.instagram.com/arpispas"
           className="bottom-left"
         >
-          Illustrations @ Tina Henschel
         </a>
       </div>
       <span className="header-left"><img
