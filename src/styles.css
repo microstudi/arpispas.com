@@ -71,10 +71,10 @@ body {
   justify-content: center;
   background: rgba(30, 30, 30, 0.97);
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
   padding: 0;
   z-index: 1000;
   font-size: 1.1em;
+  margin-left: 4vw;
 }
 
 .viewport-hidden {
@@ -243,14 +243,13 @@ li {
 .slideshow {
   width: 100%;
   position: relative;
+  border-radius: 12px;
   border: 20px solid rgba(30, 30, 30, 0.97);
 }
 .slideshow img {
   width: 100%;
   height: auto;
   max-height: 800px;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
 }
 .slideshow button {
   position: absolute;
@@ -282,7 +281,7 @@ li {
 @media only screen and (max-width: 1200px) {
   .main > .info {
     max-width: 100%;
-    left: 4vw;
+    left: 0;
     transform: translateX(0);
   }
   .viewport {
@@ -300,6 +299,16 @@ li {
 @media only screen and (max-width: 1000px) {
   .hamburger {
     display: flex;
+  }
+  .viewport.elements {
+    width: 100vw;
+    height: 92vh;
+    margin-left: 0;
+  }
+  .slideshow {
+  }
+  .viewport.elements .content {
+    padding: 0;
   }
   .nav {
     flex-direction: column;
